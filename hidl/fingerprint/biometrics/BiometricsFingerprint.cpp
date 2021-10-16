@@ -85,6 +85,8 @@ Return<RequestStatus> BiometricsFingerprint::setActiveGroup(uint32_t gid, const 
 }
 
 Return<RequestStatus> BiometricsFingerprint::authenticate(uint64_t operationId, uint32_t gid) {
+    this->mVendorDisplayService->setMode(OP_DISPLAY_NOTIFY_PRESS, 0);
+    this->mVendorDisplayService->setMode(OP_DISPLAY_AOD_MODE, 0);
     this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 0);
     this->mVendorFpService->updateStatus(OP_ENABLE_FP_LONGPRESS);
     return biometrics_2_1_service->authenticate(operationId, gid);
