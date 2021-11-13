@@ -52,6 +52,7 @@ Return<uint64_t> BiometricsFingerprint::preEnroll() {
 
 Return<void> BiometricsFingerprint::onShowUdfpsOverlay() {
     this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 1);
+    this->mVendorDisplayService->setMode(OP_DISPLAY_AOD_MODE, 1);
     return Void();
 }
 
